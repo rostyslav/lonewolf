@@ -16,6 +16,7 @@ int main() {
     // std::cout << "\033[1;" << size.ws_col << "H*";
 
     char ch = cin.get(); // or ch = getchar();
+    console.clear();
 
     return 0;
 }

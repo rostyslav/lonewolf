@@ -15,7 +15,13 @@ void Console::clear() {
     std::cout << "\033[2J\033[H";
 }
 
-void Console::gotoXY(int row, int col) {
+/**
+ * Position the cursor at specific coordinates using ANSI escape sequences
+ *
+ * @param col represent the x coordinate
+ * @param row represent the y coordinate
+ */
+void Console::gotoXY(int col, int row) {
     std::cout << "\033[" << row << ";" << col << "H";
 }
 
@@ -36,28 +42,28 @@ void Console::update() {
         // Print top border
         int currentX = window.second.getX() + 1;
         int currentY = window.second.getY() + 1;
-        while (currentY < window.second.getY() + window.second.getWidth() - 1) {
+        while (currentX < window.second.getX() + window.second.getWidth() - 1) {
             std::cout << "-";
-            currentY++;
+            currentX++;
         }
         // Print top right corner
         std::cout << "+";
         // Print left and right borders
-        while (currentX < window.second.getX() + window.second.getHeight() - 1) {
-            gotoXY(currentX, window.second.getY());
+        while (currentY < window.second.getY() + window.second.getHeight() - 1) {
+            gotoXY(window.second.getX(), currentY);
             std::cout << "|";
-            gotoXY(currentX, window.second.getY() + window.second.getWidth());
+            gotoXY(window.second.getX() + window.second.getWidth() - 1, currentY);
             std::cout << "|";
-            currentX++;
+            currentY++;
         }
         // Print left bottom corner
-        gotoXY(currentX + window.second.getHeight() - 2, window.second.getY());
+        gotoXY(window.second.getX(), window.second.getY() + window.second.getHeight() - 1);
         std::cout << "+";
         // Print bottom border
-        currentY = window.second.getY() + 1;
-        while (currentY < window.second.getY() + window.second.getWidth() - 1) {
+        currentX = window.second.getX() + 1;
+        while (currentX < window.second.getX() + window.second.getWidth() - 1) {
             std::cout << "-";
-            currentY++;
+            currentX++;
         }
         // Print right bottom corner
         std::cout << "+";

@@ -12,7 +12,7 @@ class Console {
 public:
     Console();
     void clear();
-    void gotoXY(int row, int col);
+    void gotoXY(int col, int row);
     winsize getResolution();
     void createWindow(int id, int row, int col, int width, int height);
     void update();
