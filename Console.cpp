@@ -38,35 +38,35 @@ void Console::update() {
     for (auto & window : windows) {
         // Print top left corner
         gotoXY(window.second.getX(), window.second.getY());
-        std::cout << "+";
+        std::cout << "┌─";
         // Print top border
         int currentX = window.second.getX() + 1;
         int currentY = window.second.getY() + 1;
-        while (currentX < window.second.getX() + window.second.getWidth() - 1) {
-            std::cout << "-";
+        while (currentX < window.second.getX() + window.second.getWidth() - 2) {
+            std::cout << "─";
             currentX++;
         }
-        // Print top right corner
-        std::cout << "+";
-        // Print left and right borders
+        // Top-right corner
+        std::cout << "┐";
+        // Left and right vertical borders
         while (currentY < window.second.getY() + window.second.getHeight() - 1) {
             gotoXY(window.second.getX(), currentY);
-            std::cout << "|";
+            std::cout << "│";
             gotoXY(window.second.getX() + window.second.getWidth() - 1, currentY);
-            std::cout << "|";
+            std::cout << "│";
             currentY++;
         }
-        // Print left bottom corner
+        // Bottom-left corner
         gotoXY(window.second.getX(), window.second.getY() + window.second.getHeight() - 1);
-        std::cout << "+";
-        // Print bottom border
+        std::cout << "└";
+        // Horizontal border
         currentX = window.second.getX() + 1;
         while (currentX < window.second.getX() + window.second.getWidth() - 1) {
-            std::cout << "-";
+            std::cout << "─";
             currentX++;
         }
-        // Print right bottom corner
-        std::cout << "+";
+        // Bottom-right corner
+        std::cout << "┘";
     }
 }
 

@@ -9,7 +9,7 @@ int main() {
     console.clear();
 
     console.createWindow(1, 1, 1, 80, 24);
-    console.createWindow(2, 2, 2, 78, 22);
+    console.createWindow(2, 2, 2, 76, 20);
     console.update();
 
     // std::cout << "\033[2J\033[H";
